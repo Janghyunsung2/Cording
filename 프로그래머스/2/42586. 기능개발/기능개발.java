@@ -1,34 +1,40 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 class Solution {
-    public int[] solution(int[] progresses, int[] speeds) {
+    public List<Integer> solution(int[] progresses, int[] speeds) {
+        List<Integer> progresList = Arrays.stream(progresses).boxed().collect(Collectors.toList());;
+        List<Integer> speedList = Arrays.stream(speeds).boxed().collect(Collectors.toList());;
     
-
-        List<Integer> result = new ArrayList<>();
-
-        int length = progresses.length;
-        int[] arr = new int[length];
-
-        for (int i = 0; i < arr.length; i++) {
-            int work = 100 - progresses[i];
-            arr[i] = (int) Math.ceil((double) work / speeds[i]);
-        }
-        int count = 1;
-        int Max = arr[0];
-
-        for (int i = 1; i < arr.length; i++) {
-            if(arr[i] <= Max){
-                count++;
-            }else{
-                result.add(count);
-                count = 1;
-                Max = arr[i];
+        List<Integer> answer = new ArrayList<>();
+        while (true) {
+            if(progresList.size() <= 0){
+                break;
+            }
+           for(int i=0; i < progresList.size(); i++){
+            progresList.set(i, progresList.get(i) + speedList.get(i));
+            } 
+            int count = 0;
+            for (int j = 0; j < progresList.size(); ) {
+                if (progresList.get(j) >= 100) {
+                    progresList.remove(j);
+                    speedList.remove(j);
+                    count++;
+                    // j++ 하지 않음 → remove하면 다음 원소가 앞으로 땡겨지니까
+                } else {
+                    break; // 아직 작업 안 끝난 기능 있으면 멈춤
+                }
+            }
+            if (count > 0) {
+                answer.add(count);
+                count = 0;
             }
         }
-        result.add(count);
-
-        return result.stream().mapToInt(Integer::intValue).toArray();
-
+        
+        return answer;
 
     }
-}
+}  
+             

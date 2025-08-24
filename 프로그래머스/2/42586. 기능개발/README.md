@@ -1,10 +1,10 @@
 # [level 2] 기능개발 - 42586 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42586?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42586) 
 
 ### 성능 요약
 
-메모리: 72.3 MB, 시간: 4.06 ms
+메모리: 90.3 MB, 시간: 3.97 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 09월 05일 12:43:17
+2025년 08월 24일 09:26:49
 
 ### 문제 설명
 
